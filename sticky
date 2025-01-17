@@ -30,9 +30,9 @@ openFile.click()
 se.keystroke('g', { using: ['command down', 'shift down'] })
 delay(0.2)
 se.keyCode(51) // delete key
-delay(0.3)
+delay(0.5)
 se.keystroke(file_path)
-delay(0.3)
+delay(0.5)
 se.keyCode(36) // return key
-delay(0.3)
+delay(0.5)
 se.keyCode(36) // return key
