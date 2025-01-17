@@ -1,12 +1,17 @@
 #!/usr/bin/osascript -l JavaScript
+ObjC.import('stdlib')
 
 // Build the normal argv/argc
 // https://github.com/JXA-Cookbook/JXA-Cookbook/wiki/Shell-and-CLI-Interactions#arguments
 var args = $.NSProcessInfo.processInfo.arguments
 var argv = []
-var argc = args.count
-for (var i = 0; i < argc; i++) {
+for (var i = 0; i < args.count; i++) {
     argv.push( ObjC.unwrap( args.objectAtIndex(i) ) )
+}
+
+if (args.count < 5) {
+    console.log("filepath parameter is not found...")
+    $.exit(1)
 }
 var file_path = argv[4]
 
@@ -21,13 +26,13 @@ openFile.click()
 
 // Select inputed filepath
 // https://stackoverflow.com/a/58144779
-// https://stackoverflow.com/a/73860370
+// https://eastmanreference.com/complete-list-of-applescript-key-codes
 se.keystroke('g', { using: ['command down', 'shift down'] })
 delay(0.2)
-se.keyCode(46) // delete key
-delay(0.2)
+se.keyCode(51) // delete key
+delay(0.3)
 se.keystroke(file_path)
-delay(0.5)
+delay(0.3)
 se.keyCode(36) // return key
-delay(0.5)
+delay(0.3)
 se.keyCode(36) // return key
