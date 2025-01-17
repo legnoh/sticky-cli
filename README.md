@@ -5,7 +5,7 @@ Simple script to import sticky with macOS Stickies.app!
 ## Install
 
 ```sh
-brew install legnoh/etc/sticky
+brew install legnoh/etc/sticky-cli
 ```
 
 ## Usage
