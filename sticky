@@ -1,0 +1,33 @@
+#!/usr/bin/osascript -l JavaScript
+
+// Build the normal argv/argc
+// https://github.com/JXA-Cookbook/JXA-Cookbook/wiki/Shell-and-CLI-Interactions#arguments
+var args = $.NSProcessInfo.processInfo.arguments
+var argv = []
+var argc = args.count
+for (var i = 0; i < argc; i++) {
+    argv.push( ObjC.unwrap( args.objectAtIndex(i) ) )
+}
+var file_path = argv[4]
+
+// Activate Stickies.app & Open 'Import Text…' prompt
+// https://github.com/JXA-Cookbook/JXA-Cookbook/wiki/System-Events#clicking-menu-items
+var st = Application('Stickies')
+st.activate()
+var se = Application('System Events')
+var proc = se.processes.byName('Stickies');
+var openFile = proc.menuBars[0].menuBarItems.byName('File').menus[0].menuItems.byName('Import Text…')
+openFile.click()
+
+// Select inputed filepath
+// https://stackoverflow.com/a/58144779
+// https://stackoverflow.com/a/73860370
+se.keystroke('g', { using: ['command down', 'shift down'] })
+delay(0.2)
+se.keyCode(46) // delete key
+delay(0.2)
+se.keystroke(file_path)
+delay(0.5)
+se.keyCode(36) // return key
+delay(0.5)
+se.keyCode(36) // return key
