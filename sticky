@@ -28,11 +28,11 @@ openFile.click()
 // https://stackoverflow.com/a/58144779
 // https://eastmanreference.com/complete-list-of-applescript-key-codes
 se.keystroke('g', { using: ['command down', 'shift down'] })
-delay(0.2)
+delay(0.3)
 se.keyCode(51) // delete key
-delay(0.5)
+delay(1)
 se.keystroke(file_path)
-delay(0.5)
+delay(1)
 se.keyCode(36) // return key
-delay(0.5)
+delay(1)
 se.keyCode(36) // return key
